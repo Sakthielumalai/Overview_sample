@@ -1,0 +1,6 @@
+[
+  {"CategoryID":1,"CategoryName":"Beverages","Description":"Soft drinks, coffees, teas, beers","Picture":null},
+  {"CategoryID":2,"CategoryName":"Condiments","Description":"Sauces, relishes, spreads","Picture":null},
+  {"CategoryID":3,"CategoryName":"Confections","Description":"Desserts and candies","Picture":null},
+  {"CategoryID":4,"CategoryName":"Dairy Products","Description":"Cheeses","Picture":null}
+]

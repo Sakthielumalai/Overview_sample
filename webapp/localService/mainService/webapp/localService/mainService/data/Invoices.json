@@ -1,0 +1,4 @@
+[
+  {"CustomerID":"VINET","CustomerName":"Vins et alcools Chevalier","Salesperson":"Nancy Davolio","OrderID":10248,"OrderDate":"1996-07-04T00:00:00Z","ShipperName":"Federal Shipping","ProductID":11,"ProductName":"Queso Cabrales","UnitPrice":14.0,"Quantity":12,"Discount":0.0,"ExtendedPrice":168.0,"Freight":32.38},
+  {"CustomerID":"TOMSP","CustomerName":"Toms Spezialitaten","Salesperson":"Janet Leverling","OrderID":10249,"OrderDate":"1996-07-05T00:00:00Z","ShipperName":"Speedy Express","ProductID":14,"ProductName":"Tofu","UnitPrice":18.6,"Quantity":9,"Discount":0.0,"ExtendedPrice":167.4,"Freight":11.61}
+]
