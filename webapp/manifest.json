@@ -1,0 +1,251 @@
+{
+    "_version": "1.84.0",
+    "sap.app": {
+        "id": "overview",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:ovp",
+            "version": "1.24.0",
+            "toolsId": "c574ab4b-66cc-4c71-87ea-3a6f31780352"
+        },
+        "dataSources": {
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            },
+            "mainService": {
+                "uri": "/V4/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.148.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.fe.templates": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "overview.i18n.i18n"
+                }
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.ovp.app.Main": {
+                        "controllerName": "overview.ext.controller.OverViewPageExt"
+                    }
+                },
+                "sap.ui.viewExtensions": {
+                    "sap.ovp.app.Main": {
+                        "SmartFilterBarControlConfigurationExtension|Customers": {
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "overview.ext.fragment.Test",
+                            "type": "XML"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntitySet": "Customers",
+        "containerLayout": "resizable",
+        "enableLiveFilter": true,
+        "considerAnalyticalParameters": false,
+        "cards": {
+            "staticLinkCard": {
+                "template": "sap.ovp.cards.linklist",
+                "settings": {
+                    "title": "Quick Links",
+                    "subTitle": "Static card (no backend needed)",
+                    "listFlavor": "standard",
+                    "defaultSpan": {
+                        "cols": 1,
+                        "rows": 10
+                    },
+                    "staticContent": [
+                        {
+                            "title": "SAP",
+                            "subTitle": "Open sap.com",
+                            "imageUri": "sap-icon://globe",
+                            "targetUri": "https://www.sap.com"
+                        },
+                        {
+                            "title": "Northwind OData V4",
+                            "subTitle": "Service root",
+                            "imageUri": "sap-icon://database",
+                            "targetUri": "https://services.odata.org/V4/Northwind/Northwind.svc/"
+                        }
+                    ]
+                }
+            },
+            "customersTable": {
+                "template": "sap.ovp.cards.table",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "Customers",
+                    "title": "Customers",
+                    "subTitle": "Filtered by company name",
+                    "defaultSpan": {
+                        "cols": 2,
+                        "rows": 20
+                    }
+                }
+            },
+            "productsList": {
+                "template": "sap.ovp.cards.list",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "Products",
+                    "title": "Products",
+                    "subTitle": "Price and stock",
+                    "listType": "extended",
+                    "listFlavor": "standard",
+                    "defaultSpan": {
+                        "cols": 1,
+                        "rows": 20
+                    }
+                }
+            },
+            "categoriesList": {
+                "template": "sap.ovp.cards.list",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "Categories",
+                    "title": "Categories",
+                    "listType": "condensed",
+                    "defaultSpan": {
+                        "cols": 1,
+                        "rows": 20
+                    }
+                }
+            },
+            "Sakthi": {
+                "template": "overview.ext.Test",
+                "model": "mainModel",
+                "settings": {
+                    "title": "CustomCard"
+                }
+            },
+            "test1": {
+                "template": "sap.ovp.cards.v4.charts.analytical",
+                "model": "mainModel",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#productStock",
+                    "entitySet": "Invoices",
+                    "title": "invoice",
+                    "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#invoice1",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#productStock",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#productStock"
+                }
+            },
+            "Customer": {
+                "template": "sap.ovp.cards.v4.table",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "Customers",
+                    "title": "Customer",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem",
+                    "sortBy": "ContactName",
+                    "sortOrder": "ascending",
+                    "tabs": [
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem"
+                        }
+                    ]
+                }
+            },
+            "Northwind": {
+                "template": "overview.ext.Northwind",
+                "model": "mainModel",
+                "settings": {
+                    "title": "CustomCard"
+                }
+            }
+        },
+        "globalFilterControlType": "MacroFilterBar",
+        "bHeaderExpanded": true,
+        "disableErrorPage": false,
+        "refreshIntervalInMinutes": 5
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    },
+    "sap.fe": {
+        "app": {
+            "enableLazyLoading": true
+        }
+    }
+}
